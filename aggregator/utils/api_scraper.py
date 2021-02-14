@@ -27,25 +27,42 @@ class scraper():
         if pth:
             return pth[-1]
 
-    def get_comments(self, video_url: str, maxResults: int = 100, save_to_disk: bool = False):
-        """
-        Fetches comments from youtube video using Youtube v3 Data API 
-        """
+    def get_response(self, video_url: str, maxResults: int = 100, pageToken: str = None):
         response = self.service.commentThreads().list(
             part='snippet',
             maxResults= maxResults,
             textFormat='plainText',
             order='time',
+            pageToken=pageToken,
             videoId=self.get_id(video_url)
         ).execute()
 
+        try:
+            next_page_token = response["nextPageToken"]
+        except Exception as e:
+            next_page_token = None
+
+        return response, next_page_token
+
+    def get_comments(self, video_url: str, maxResults: int = 100, save_to_disk: bool = False):
+        """
+        Fetches comments from youtube video using Youtube v3 Data API 
+        """
+        response, next_page_token = self.get_response(video_url, maxResults)
         comments = [i['snippet']['topLevelComment']['snippet']['textDisplay'] for i in response['items']]
+        all_comments = []
+        all_comments += comments
+
+        while next_page_token:
+            response, next_page_token = self.get_response(video_url, maxResults,pageToken=next_page_token)
+            comments = [i['snippet']['topLevelComment']['snippet']['textDisplay'] for i in response['items']]
+            all_comments += comments
 
         if save_to_disk:
             with open(self.save_dir, 'wb') as handle:
                 pickle.dump(response, handle, protocol=pickle.HIGHEST_PROTOCOL)   
-        
-        return comments         
+
+        return all_comments         
 
 
 if __name__ == "__main__":
@@ -53,4 +70,7 @@ if __name__ == "__main__":
     api_key = "AIzaSyC5HZxK4bznwBldhwF_gJXodOqYurYlFqI"
     
     s = scraper(api_key)
-    print(s.get_comments(url,save_to_disk=True))
+    comments = s.get_comments(url,save_to_disk=False)
+    
+    print(comments)
+    print(len(comments))
