@@ -1,0 +1,6 @@
+# directories
+/tests
+
+# python cache
+__pycache__/
+*.py[cod]
