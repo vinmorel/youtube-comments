@@ -114,11 +114,11 @@ def preprocess(comment_list: list, vec: str = None) -> list:
     if vec == 'tfidf':
         vectorizer = TfidfVectorizer()
         tfidf = vectorizer.fit_transform(preprocessed_comments)
-        return tfidf.toarray(), vectorizer.get_feature_names()
+        return tfidf.toarray(), vectorizer.get_feature_names(), preprocessed_comments
     if vec == 'bow':
         vectorizer = CountVectorizer()
         bow = vectorizer.fit_transform(preprocessed_comments)
-        return bow.toarray(), vectorizer.get_feature_names()
+        return bow.toarray(), vectorizer.get_feature_names(), preprocessed_comments
     return preprocessed_comments
 
 
@@ -133,10 +133,10 @@ if __name__ == "__main__":
         comments = [i['snippet']['topLevelComment']['snippet']['textDisplay'] for i in data['items']]
     
         # tfidf
-        preprocessed_comments, feature_names = preprocess(comments, vec='tfidf')
+        vec, feature_names, preprocessed_comments = preprocess(comments, vec='tfidf')
 
         # bag of words
-        preprocessed_comments, feature_names = preprocess(comments, vec='bow')
-        
+        vec, feature_names, preprocessed_comments = preprocess(comments, vec='bow')
+
         # standard 
         preprocessed_comments = preprocess(comments)
