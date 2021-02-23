@@ -2,6 +2,7 @@ import re
 import spacy
 import demoji
 import numpy as np
+from pathlib import Path
 from langdetect import detect
 from langdetect import DetectorFactory
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -123,7 +124,6 @@ def preprocess(comment_list: list, vec: str = None) -> list:
 
 if __name__ == "__main__":
     import pickle
-    from pathlib import Path
 
     wdir = Path(__file__).resolve().parents[0]
     save_dir = wdir / "response.pickle"
