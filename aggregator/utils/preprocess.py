@@ -7,6 +7,8 @@ from langdetect import DetectorFactory
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
 
+from pathlib import Path
+
 
 def check_dim(dim2_list: list) -> list:
     # Checks list dimension to make sure it is 2 dimension : [['foo']] 
@@ -107,7 +109,12 @@ def preprocess(comment_list: list, vec: str = None) -> list:
         comment = fix_spaces(comment)
         preprocessed_comments.append(comment)
 
-    preprocessed_comments = check_lang(preprocessed_comments)
+    ####################################################   
+    # 
+    # 
+    # 
+    # 
+    # preprocessed_comments = check_lang(preprocessed_comments)
     preprocessed_comments = l.lemmatize(preprocessed_comments)
 
     if vec == 'tfidf':

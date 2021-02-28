@@ -44,7 +44,7 @@ class scraper():
 
         return response, next_page_token
 
-    def get_comments(self, video_url: str, maxResults: int = 100, save_to_disk: bool = False):
+    def get_comments(self, video_url: str, maxResults: int = 100, save_to_disk: bool = False, pickle_name: str = "No name"):
         """
         Fetches comments from youtube video using Youtube v3 Data API 
         """
@@ -59,7 +59,7 @@ class scraper():
             all_comments += comments
 
         if save_to_disk:
-            with open(self.save_dir, 'wb') as handle:
+            with open(pickle_name, 'wb') as handle:
                 pickle.dump(response, handle, protocol=pickle.HIGHEST_PROTOCOL)   
 
         return all_comments         
