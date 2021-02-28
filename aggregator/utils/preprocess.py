@@ -2,12 +2,11 @@ import re
 import spacy
 import demoji
 import numpy as np
+from pathlib import Path
 from langdetect import detect
 from langdetect import DetectorFactory
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.feature_extraction.text import CountVectorizer
-
-from pathlib import Path
 
 
 def check_dim(dim2_list: list) -> list:
@@ -19,7 +18,14 @@ def check_dim(dim2_list: list) -> list:
 
 def check_lang(comment_list: list) -> list:
     DetectorFactory.seed = 0
-    return [comment for comment in comment_list if detect(comment) == 'en']
+    new_comments = []
+    for comment in comment_list:
+        try:
+            if comment != '' and detect(comment) == 'en':
+                new_comments.append(comment)
+        except Exception:
+            continue
+    return new_comments
 
 def prune_encodings(comment: str) -> str:
     pruned_enc = comment.replace("\n"," ")
@@ -109,28 +115,22 @@ def preprocess(comment_list: list, vec: str = None) -> list:
         comment = fix_spaces(comment)
         preprocessed_comments.append(comment)
 
-    ####################################################   
-    # 
-    # 
-    # 
-    # 
-    # preprocessed_comments = check_lang(preprocessed_comments)
+    preprocessed_comments = check_lang(preprocessed_comments)
     preprocessed_comments = l.lemmatize(preprocessed_comments)
 
     if vec == 'tfidf':
         vectorizer = TfidfVectorizer()
         tfidf = vectorizer.fit_transform(preprocessed_comments)
-        return tfidf.toarray(), vectorizer.get_feature_names()
+        return tfidf.toarray(), vectorizer.get_feature_names(), preprocessed_comments
     if vec == 'bow':
         vectorizer = CountVectorizer()
         bow = vectorizer.fit_transform(preprocessed_comments)
-        return bow.toarray(), vectorizer.get_feature_names()
+        return bow.toarray(), vectorizer.get_feature_names(), preprocessed_comments
     return preprocessed_comments
 
 
 if __name__ == "__main__":
     import pickle
-    from pathlib import Path
 
     wdir = Path(__file__).resolve().parents[0]
     save_dir = wdir / "response.pickle"
@@ -140,10 +140,10 @@ if __name__ == "__main__":
         comments = [i['snippet']['topLevelComment']['snippet']['textDisplay'] for i in data['items']]
     
         # tfidf
-        preprocessed_comments, feature_names = preprocess(comments, vec='tfidf')
+        vec, feature_names, preprocessed_comments = preprocess(comments, vec='tfidf')
 
         # bag of words
-        preprocessed_comments, feature_names = preprocess(comments, vec='bow')
-        
+        vec, feature_names, preprocessed_comments = preprocess(comments, vec='bow')
+
         # standard 
         preprocessed_comments = preprocess(comments)
