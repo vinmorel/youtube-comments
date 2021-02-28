@@ -94,14 +94,12 @@ if __name__ == "__main__":
     if prepType == 't':
         # tfidf
         print("Preprocessing " + str(len(original_comments)) + " commments by TD-IDF...")
-        preprocessed_comments, feature_names = preprocess(original_comments, vec='tfidf')
+        preprocessed_comments, feature_names, proc_comments = preprocess(original_comments, vec='tfidf')
     elif prepType == 'b':
         # bag of words
         print("Preprocessing " + str(len(original_comments)) +" commments by Bag of Words...")
-        preprocessed_comments, feature_names = preprocess(original_comments, vec='bow')
+        preprocessed_comments, feature_names, proc_comments = preprocess(original_comments, vec='bow')
     
-    # standard 
-    proc_comments = preprocess(original_comments)
 
 #cluster comments
 
