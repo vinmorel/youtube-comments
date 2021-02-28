@@ -18,7 +18,14 @@ def check_dim(dim2_list: list) -> list:
 
 def check_lang(comment_list: list) -> list:
     DetectorFactory.seed = 0
-    return [comment for comment in comment_list if comment != '' and detect(comment) == 'en']
+    new_comments = []
+    for comment in comment_list:
+        try:
+            if comment != '' and detect(comment) == 'en':
+                new_comments.append(comment)
+        except Exception:
+            continue
+    return new_comments
 
 def prune_encodings(comment: str) -> str:
     pruned_enc = comment.replace("\n"," ")
