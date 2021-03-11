@@ -84,6 +84,21 @@ def normalize_abbreviations(text: str) -> str:
         'kk' : 'ok',
         'aight' : 'alright',
         'ty' : 'thank you',
+        'lmk' : 'let me know',
+        'ily' : 'I love you',
+        'fyi' : 'for your info',
+        'tldr' : 'too long didn\'t read',
+        'nvm' : 'nevermind',
+        'btw' : 'by the way',
+        'idk' : 'I don\'t know',
+        'imo' : 'in my opinion',
+        'tbh' : 'to be honest',
+        'idc' : 'I don\'t care',
+        'np' : 'no problem',
+        'asap' : 'as soon as possible',
+        'bf' : 'boyfriend',
+        'gf' : 'girlfriend',
+        'nah' : 'no'
     }
     for i, word in enumerate(words):
         try:
