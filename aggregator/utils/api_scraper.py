@@ -48,19 +48,24 @@ class scraper():
         """
         Fetches comments from youtube video using Youtube v3 Data API 
         """
+        all_responses = []
+
         response, next_page_token = self.get_response(video_url, maxResults)
         comments = [i['snippet']['topLevelComment']['snippet']['textDisplay'] for i in response['items']]
         all_comments = []
         all_comments += comments
 
+        all_responses.append (response)
+
         while next_page_token:
             response, next_page_token = self.get_response(video_url, maxResults,pageToken=next_page_token)
             comments = [i['snippet']['topLevelComment']['snippet']['textDisplay'] for i in response['items']]
             all_comments += comments
+            all_responses.append (response)
 
         if save_to_disk:
             with open(pickle_name, 'wb') as handle:
-                pickle.dump(response, handle, protocol=pickle.HIGHEST_PROTOCOL)   
+                pickle.dump(all_responses, handle, protocol=pickle.HIGHEST_PROTOCOL)   
 
         return all_comments         
 
