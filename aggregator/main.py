@@ -1,18 +1,20 @@
 # implement main pipeline here with tools from /utils
-from utils.preprocess import preprocess
-from utils.api_scraper import scraper
-
 import getopt
-import sys
-import re
-from os import path
-
 import pickle
+import re
+import sys
+from os import path
 from pathlib import Path
 
-from sklearn.cluster import KMeans
-from sklearn.cluster import DBSCAN
-from sklearn.cluster import SpectralClustering
+import gensim
+from gensim import corpora, models
+from gensim.utils import simple_preprocess
+from sklearn.cluster import DBSCAN, KMeans, SpectralClustering
+
+from utils.api_scraper import scraper
+from utils.preprocess import preprocess
+from utils.gather_results import saver
+
 
 if __name__ == "__main__":
 
@@ -23,7 +25,7 @@ if __name__ == "__main__":
     noClusters = 10
 
 #extract commmand line arguments
-    helpMsg = "Usage: -y <YouTube video URL> -k <API Key> -p <t | b = TF-IDF, BOW> -c <k | d | s = KMeans, DBSCAN, Spectral> -n <Number of clusters>"
+    helpMsg = "Usage: -y <YouTube video URL> -k <API Key> -p <t | b = TF-IDF, BOW> -c <k | d | s | l = KMeans, DBSCAN, Spectral, LDA> -n <Number of clusters>"
 
     if len(sys.argv) == 1:
         print(helpMsg)
@@ -36,15 +38,15 @@ if __name__ == "__main__":
     
     for name, value in options:
         if name == '-y':
-            videoURL = value
+            videoURL = value.strip()
         elif name == '-k':
-            apiKey = value
+            apiKey = value.strip()
         elif name == '-p':
-            prepType = value
+            prepType = value.strip()
         elif name == '-c':
-            clusterType = value
+            clusterType = value.strip()
         elif name == '-n':
-            noClusters = value
+            noClusters = value.strip()
         elif name == '-h':
             print(helpMsg)
         else :
@@ -61,7 +63,7 @@ if __name__ == "__main__":
         print("Invalid preprocessing type, using t (TF-IDF)...")
         prepType = 't'
 
-    if clusterType not in ['k', 'd', 's']:
+    if clusterType not in ['k', 'd', 's', 'l']:
         print("Invalid cluster type, using K (KMeans)...")
         clusterType = 'k'
 
@@ -72,8 +74,6 @@ if __name__ == "__main__":
         fileName = "No name"
 
 #get comments file
-    # "https://www.youtube.com/watch?v=7MFKy7DJsCY"   #Lost World of the Maya (Full Episode) | National Geographic
-    # error -> check_lang
 
     #if available use previous saved pickle file
 
@@ -82,12 +82,17 @@ if __name__ == "__main__":
 
         with open(fileName + ".pickle", 'rb') as handle:
             data = pickle.load(handle)
-            original_comments = [i['snippet']['topLevelComment']['snippet']['textDisplay'] for i in data['items']]
+            original_comments = []
+            for comment in data:
+                for item in comment['items']:
+                    original_comments.append(item['snippet']['topLevelComment']['snippet']['textDisplay'])
     else:
         print("Extracting commments from " + videoURL + "...")
 
         s = scraper(apiKey)
         original_comments = s.get_comments(videoURL, save_to_disk=True, pickle_name=fileName + ".pickle")
+
+    print("Found " + str(len(original_comments)) + " commments...")
 
 #preprocess comments
 
@@ -100,38 +105,47 @@ if __name__ == "__main__":
         print("Preprocessing " + str(len(original_comments)) +" commments by Bag of Words...")
         preprocessed_comments, feature_names, proc_comments = preprocess(original_comments, vec='bow')
     
-
 #cluster comments
 
     if clusterType == 'k':
         print("Clustering with KMeans in " + str(NO_CLUSTERS) + " clusters...")
         clust = KMeans(n_clusters=NO_CLUSTERS, random_state=0).fit(preprocessed_comments)
+        list_clusters = clust.labels_
     elif clusterType == 'd':
         print("Clustering with DBSCAN...")
         clust = DBSCAN(eps=0.5, min_samples=2, metric='cosine').fit(preprocessed_comments)  #jaccard not supported with sparse matrix
+        list_clusters = clust.labels_
     elif clusterType == 's':
         print("Clustering with SpectralClustering in " + str(NO_CLUSTERS) + " clusters...")
         clust = SpectralClustering(n_clusters=NO_CLUSTERS, assign_labels="discretize", random_state=0).fit(preprocessed_comments)
+        list_clusters = clust.labels_
+    elif clusterType == 'l':
+        print("Clustering with LDA in " + str(NO_CLUSTERS) + " clusters...")
 
-    print(clust.labels_)
+        comments_tokenized = [simple_preprocess(doc) for doc in proc_comments]
+        dictionary = corpora.Dictionary()
+        bow_corpus = [dictionary.doc2bow(comment, allow_update=True) for comment in comments_tokenized]
+        #print(bow_corpus)
 
-    orig_clusters={}
-    proc_clusters={}
+        if prepType == 't':
+            # tfidf
+            tfidf = models.TfidfModel(bow_corpus)
+            corpus_tfidf = tfidf[bow_corpus]
+            lda_model = gensim.models.LdaMulticore(corpus_tfidf, num_topics=NO_CLUSTERS, id2word=dictionary, passes=2, workers=4)
+        else:
+            lda_model = gensim.models.LdaMulticore(bow_corpus, num_topics=NO_CLUSTERS, id2word=dictionary, passes=2, workers=4)
+        
+        #print(lda_model.print_topics(-1, 5))
 
-    for i in range(len(clust.labels_)):
-        cluster_idx = clust.labels_[i]
-        if orig_clusters.get(cluster_idx) == None:
-            orig_clusters[cluster_idx] = []
-            proc_clusters[cluster_idx] = []
-        (orig_clusters[cluster_idx]).append(original_comments[i])
-        (proc_clusters[cluster_idx]).append(proc_comments[i])
+        list_clusters = lda_model.print_topics()
 
 #save clusters in a text file
-    savedFileName = str(fileName) + '_' + str(NO_CLUSTERS) + '_' + clusterType + '.txt'
+    savedFileName = str(fileName) + '_' + str(NO_CLUSTERS) + '_' + clusterType + '_' + prepType + '.txt'
     print("Saving clusters to the file " + savedFileName + "...")
 
-    with open(savedFileName, 'w', encoding="utf-8") as f:
-        f.write("Number of clusters: {0:d} ({1:d} comments in total)\n\n".format(NO_CLUSTERS,len(clust.labels_)))
-        for key in orig_clusters.keys():
-            f.write("CLUSTER %d (original %d comments):\n%s\n\n"%(key,len(orig_clusters[key]),orig_clusters[key]))
-            f.write("CLUSTER %d (processed %d comments):\n%s\n\n\n"%(key,len(proc_clusters[key]),proc_clusters[key]))
+    sa = saver()
+
+    if clusterType == 'l':
+        sa.save_topics(savedFileName, list_clusters)
+    else :
+        sa.save_clusters(savedFileName, list_clusters, original_comments, proc_comments)
