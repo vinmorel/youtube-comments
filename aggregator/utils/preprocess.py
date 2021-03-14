@@ -73,6 +73,42 @@ def prune_numbers(comment: str) -> str:
 def fix_spaces(comment:str) -> str:
     return " ".join(comment.split())
 
+def normalize_abbreviations(text: str) -> str:
+    words = text.split()
+    abv = {
+        'r' : 'are',
+        'u' : 'you',
+        'thx' : 'thanks',
+        'ye' : 'yes',
+        'yea' : 'yes',
+        'kk' : 'ok',
+        'aight' : 'alright',
+        'ty' : 'thank you',
+        'lmk' : 'let me know',
+        'ily' : 'I love you',
+        'fyi' : 'for your info',
+        'tldr' : 'too long didn\'t read',
+        'nvm' : 'nevermind',
+        'btw' : 'by the way',
+        'idk' : 'I don\'t know',
+        'imo' : 'in my opinion',
+        'tbh' : 'to be honest',
+        'idc' : 'I don\'t care',
+        'np' : 'no problem',
+        'asap' : 'as soon as possible',
+        'bf' : 'boyfriend',
+        'gf' : 'girlfriend',
+        'nah' : 'no'
+    }
+    for i, word in enumerate(words):
+        try:
+            words[i] = abv[word]
+        except Exception as e:
+            continue
+
+    text = " ".join(words)
+    return text
+
 class lemmatizer():
     """ lematizer object using spacy. Also removes stopwords. """
     def __init__(self, model: str = 'en_core_web_sm', batch_size: int = 100):
@@ -113,6 +149,7 @@ def preprocess(comment_list: list, vec: str = None) -> list:
         comment = prune_emojis(comment)
         comment = prune_numbers(comment)
         comment = fix_spaces(comment)
+        comment = normalize_abbreviations(comment)
         preprocessed_comments.append(comment)
 
     preprocessed_comments = check_lang(preprocessed_comments)
@@ -147,3 +184,6 @@ if __name__ == "__main__":
 
         # standard 
         preprocessed_comments = preprocess(comments)
+        print(preprocessed_comments)
+
+    
