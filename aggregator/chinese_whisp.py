@@ -25,7 +25,7 @@ def make_graph(comments_vec):
 if __name__ == "__main__":
     from utils.api_scraper import scraper
     
-    url = "https://www.youtube.com/watch?v=O7cICyL3j48&ab_channel=RickSteves%27Europe"
+    url = "https://www.youtube.com/watch?v=0bt0SjbS3xc&ab_channel=deeplizard"
     api_key = "AIzaSyC5HZxK4bznwBldhwF_gJXodOqYurYlFqI"
     
     s = scraper(api_key)
