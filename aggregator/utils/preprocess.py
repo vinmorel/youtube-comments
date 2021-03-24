@@ -19,13 +19,20 @@ def check_dim(dim2_list: list) -> list:
 def check_lang(comment_list: list) -> list:
     DetectorFactory.seed = 0
     new_comments = []
-    for comment in comment_list:
+    deleted_idxs = []
+    for i, comment in enumerate(comment_list):
         try:
             if comment != '' and detect(comment) == 'en':
                 new_comments.append(comment)
+            else:
+                deleted_idxs.append(i)
         except Exception:
             continue
-    return new_comments
+    if len(deleted_idxs) > 0:
+        map_id = [i for i in range(len(comment_list)) if i not in deleted_idxs]
+    else : 
+        map_id = [i for i in range(comment_list)]
+    return new_comments, map_id
 
 def prune_encodings(comment: str) -> str:
     pruned_enc = comment.replace("\n"," ")
@@ -152,18 +159,18 @@ def preprocess(comment_list: list, vec: str = None) -> list:
         comment = normalize_abbreviations(comment)
         preprocessed_comments.append(comment)
 
-    preprocessed_comments = check_lang(preprocessed_comments)
+    preprocessed_comments, id_map = check_lang(preprocessed_comments)
     preprocessed_comments = l.lemmatize(preprocessed_comments)
 
     if vec == 'tfidf':
         vectorizer = TfidfVectorizer()
         tfidf = vectorizer.fit_transform(preprocessed_comments)
-        return tfidf.toarray(), vectorizer.get_feature_names(), preprocessed_comments
+        return tfidf.toarray(), vectorizer.get_feature_names(), preprocessed_comments, id_map
     if vec == 'bow':
         vectorizer = CountVectorizer()
         bow = vectorizer.fit_transform(preprocessed_comments)
-        return bow.toarray(), vectorizer.get_feature_names(), preprocessed_comments
-    return preprocessed_comments
+        return bow.toarray(), vectorizer.get_feature_names(), preprocessed_comments, id_map
+    return preprocessed_comments, id_map
 
 
 if __name__ == "__main__":
@@ -177,13 +184,11 @@ if __name__ == "__main__":
         comments = [i['snippet']['topLevelComment']['snippet']['textDisplay'] for i in data['items']]
     
         # tfidf
-        vec, feature_names, preprocessed_comments = preprocess(comments, vec='tfidf')
+        vec, feature_names, preprocessed_comments, id_map = preprocess(comments, vec='tfidf')
 
         # bag of words
-        vec, feature_names, preprocessed_comments = preprocess(comments, vec='bow')
+        vec, feature_names, preprocessed_comments, id_map = preprocess(comments, vec='bow')
 
         # standard 
-        preprocessed_comments = preprocess(comments)
+        preprocessed_comments, id_map = preprocess(comments)
         print(preprocessed_comments)
-
-    
