@@ -31,20 +31,41 @@ if __name__ == "__main__":
     s = scraper(api_key)
     comments = s.get_comments(url)
 
-    vec, feature_names, preprocessed_comments = preprocess(comments, vec='tfidf')
+    vec, feature_names, preprocessed_comments, id_map = preprocess(comments, vec='tfidf')
 
     print(vec)
 
     G = make_graph(vec)
     chinese_whispers(G, weighting='top', iterations=2, seed=123)
 
-    nodes = G.nodes(data=True)
+    comment_ids = [(preprocessed_comments[i], id_map[i]) for i in range(len(preprocessed_comments))]
 
     for label, cluster in sorted(aggregate_clusters(G).items(), key=lambda e: len(e[1]), reverse=True):
-        print('Class {}'.format(label))
+        print('Cluster {}'.format(label))
 
-        clustered_comments = [preprocessed_comments[int(idx)] for idx in cluster]
+        print("Processed comments...")
+        clustered_comments = [comment_ids[int(idx)][0] for idx in cluster]
         print(clustered_comments)
+        
+        print("\nUnprocessed comments...")
+        raw_clustered_comments = [comments[int(comment_ids[int(idx)][1])] for idx in cluster]
+        print(raw_clustered_comments)
+        
+        print()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         ## with pickled comments
