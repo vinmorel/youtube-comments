@@ -1,0 +1,142 @@
+Number of clusters: 20 (126 comments in total)
+
+CLUSTER 11 (original 9 comments):
+['Offloads are nice but the long passes are just amazing', 'I don  t look roll the end it s not rugby  it s circus', 'How amazing, but please see this match:  https://www.youtube.com/watch?v=HNtjwBnaHlY. How incredible fair-play and passes.', 'The chistera pass made by a true basque like Iribaren, this is why nobody on earth can do those passes like the basque country rugbymen: they play the real basque pelota way before rugby ;-)', 'Best piece of skill in the video is Robshaw’s cheeky little chip for Care to chase. 😳🤪😄', '*”Me playing academy rugby for my school”* and still don’t know how to to pass correctly with my left', "I don't play rugby but the unselfishness and sheer skill in this video is amazing", 'respect this grind, this is what we need during the no rugby period', 'Amazing how many creative ways there are of dispossessing yourself of a rugby ball']
+
+CLUSTER 11 (processed 9 comments):
+['offload nice long pass amazing', 'don t look roll end s rugby s circus', 'amazing match incredible fair play pass', 'chistera pass true basque like iribaren earth pass like basque country rugbymen play real basque pelota way rugby', 'good piece skill video robshaw cheeky little chip care chase', 'play academy rugby school know pass correctly left', 'play rugby unselfishness sheer skill video amazing', 'respect grind need rugby period', 'amazing creative way dispossess rugby ball']
+
+
+CLUSTER 5 (original 3 comments):
+['Scarlets vs Perpignan 2010 should have made this list: https://www.youtube.com/watch?v=ZAUvBFw8KsU&t=23s', 'Missed Shane Williams vs Eng 2003 world cup', 'Farrel vs Wales 2017?']
+
+CLUSTER 5 (processed 3 comments):
+['scarlet vs perpignan list', 'miss shane william vs eng world cup', 'farrel vs wale']
+
+
+CLUSTER 7 (original 14 comments):
+["The clips are too fast and too short. I'm fucked if I can see what's happening.", 'The muddled parsnip temporally attach because vegetarian chemically end around a funny trouble. quiet, lonely wound', 'That’s pass by the Fiji lad was insane', "Meh, some of them are excellent, but a significant number are bog standard, some of the longer passes are stuff that's happened in league since the 80s, also the reverse/flick out the back and no look pass has been a weekly thing for ages in league.\nNo.3 was a forward pass by at least a metre, no.7 is weak as fuck, standard pass you see every weekend, no.8 through the legs isn't anything special either, nor is no.9, also nothing special. 16 is a weekly occurrence in league, 19 is another forward pass (before the final pass), 21 is another simple drop off pass, 22 is yet another forward pass.\n\nNo.23 is the best technical pass of all of them", 'The dillion layd pass is my number one how did he generate so much power sitting down nevermind the behind the back & to the player.', "THAT DYLAN LEYD'S PASS😍😍😍", 'Could have add the «\xa0fake pass\xa0» of O’Driscoll', 'What about Pio Tuwai pass to Jerry Tuwai at the Hong Kong 7s', "The one of Crusader's wing (Mataeli?) is something that just looks impossible to replicate. On the first take I thought it was just pure luck, but in the slow motion you can clearly see his intent to pass. Insane focus when falling almost head first into the ground.", 'The flips are all wonderful but passes like Finn Russels was incredible', "Where is biggar's pass ?", 'One of the best pass come from Matt Hopper (Harlequins) with a reverse pirate pass against Toulon. Magic!!!', 'No 22 top of the pile....not even human.', "That's utter filth"]
+
+CLUSTER 7 (processed 14 comments):
+['clip fast short fuck happen', 'muddle parsnip temporally attach vegetarian chemically end funny trouble quiet lonely wound', 'pass fiji lad insane', 'meh excellent significant number bog standard long pass stuff happen league s reverse flick look pass weekly thing age league forward pass metre weak fuck standard pass weekend leg special special weekly occurrence league forward pass final pass simple drop pass forward pass good technical pass', 'dillion layd pass number generate power sit nevermind player', 'dylan leyd pass', 'add « fake pass » o’driscoll', 'pio tuwai pass jerry tuwai hong kong s', 'crusader wing mataeli look impossible replicate think pure luck slow motion clearly intent pass insane focus fall head ground', 'flip wonderful pass like finn russel incredible', 'biggar pass', 'good pass come matt hopper harlequin reverse pirate pass toulon magic', 'pile human', 'utter filth']
+
+
+CLUSTER 2 (original 5 comments):
+["Can't help but grin like an idiot watching this.", 'Like watching an NRL match', 'Good stuff. New to watching Rugby.', 'Ever since moving to oz ive lost so much respect for rugby. Particularly euro rugby. Its just so far behind rugby league and the nrl.... but this was great to watch.', "I've only ever watched one Rugby Union match live, but this video is sensational! 🏉"]
+
+CLUSTER 2 (processed 5 comments):
+['help grin like idiot watch', 'like watch nrl match', 'good stuff new watch rugby', 'move oz ve lose respect rugby particularly euro rugby far rugby league nrl great watch', 'watch rugby union match live video sensational']
+
+
+CLUSTER 6 (original 5 comments):
+['The pass from Duane Vermeulen against Wales to du Preez should be here too', "There's a Duane Vermeulen on the touchline against NZ pass missing here...", "How could you miss Duane Vermeulen's pass to Fourie du Preez for the winning try against Wales in the 2015 WC quarterfinal? It was brilliant!!!", 'I remember one try for the Springboks . Jaque Fourie chased a kick everyone thought would go out but he managed to flick it to Fourie du Preez for a try. Might have been against Wales', 'But what about Duane Vermeulen to Fourie du Preez at RWC Semi final 2015 against Wales?']
+
+CLUSTER 6 (processed 5 comments):
+['pass duane vermeulen wale du preez', 'duane vermeulen touchline nz pass miss', 'miss duane vermeulen pass fourie du preez win try wale wc quarterfinal brilliant', 'remember try springbok jaque fourie chase kick think manage flick fourie du preez try wale', 'duane vermeulen fourie du preez rwc semi final wale']
+
+
+CLUSTER 16 (original 5 comments):
+['The brainy church classically license because woolen adventitiously search along a flawless gosling. abundant, well-groomed geese', 'Romans 6:23\xa0\xa0“For the wages of sin is death, but the free gift of God is eternal life in Christ Jesus our Lord.” For our sins we deserve hell. But since Jesus came to this earth as a free gift out of God’s amazing love to pay for our sins and take the punishment we deserved we can be saved. We accept this gift with our genuine faith and not by works (Ephesians 2:8-9).', '5 Maori out of 25. Not bad.', 'Video proves that the ball is the threat..', 'Dude you deserve 1M+ subs by now, Never dissapoint with your videos! 💪']
+
+CLUSTER 16 (processed 5 comments):
+['brainy church classically license woolen adventitiously search flawless gosle abundant groom geese', 'roman 23 wage sin death free gift god eternal life christ jesus lord sin deserve hell jesus come earth free gift god amazing love pay sin punishment deserve save accept gift genuine faith work ephesian 8', 'maori bad', 'video prove ball threat', 'dude deserve m sub dissapoint video']
+
+
+CLUSTER 17 (original 8 comments):
+['You tax dodging savages must surely know that league has been doing this dynamic stuff for  very very long time.', 'Lot of hail Mary passes here, but they are spectacular when they work.', 'Low socks, check. Unnecessary hitch kick, check. Attempts multiple behind the back passes, costing his team points in the long run but does look good for a career highlight reel on the one occasion it comes off. Check. Southern hemisphere announcer is bound to cream themselves at the lovely Pacific island import they plan on playing at the world cup.', "Brian O'Driscolls pass to himself was was a class move. Pity it didn't make the list.", 'I was at Murrayfield when finn threw that pass to huw Jones. The whole stadium went silent for that 1 second, it was incredible', 'Any pass from Juan Martin Hernandez? u crazy mate', "@Andrew Forde some excellent stuff in there but why no BOD? here maybe you'll find some in this great video... https://youtu.be/lcFgM4-_V5Y", "Some great passes, but most would come to nothing without great team mates and team work. Throwing that no look stuff and just knowing that your guy is there to get it is true class. I see kids practicing throwing the behind the back pass stuff all the time but it's not often their trailing player can deal with the surprise ball in their face."]
+
+CLUSTER 17 (processed 8 comments):
+['tax dodge savage surely know league dynamic stuff long time', 'lot hail mary pass spectacular work', 'low sock check unnecessary hitch kick check attempt multiple pass cost team point long run look good career highlight reel occasion come check southern hemisphere announcer bind cream lovely pacific island import plan play world cup', "brian o'driscolls pass class pity list", 'murrayfield finn throw pass huw jone stadium go silent second incredible', 'pass juan martin hernandez crazy mate', 'forde excellent stuff bod maybe find great video', 'great pass come great team mate team work throw look stuff know guy true class kid practice throw pass stuff time trail player deal surprise ball face']
+
+
+CLUSTER 0 (original 16 comments):
+['This is so epic', "Such a shame  England never had a manager to harvest Cipriani's skills.", "Missing the most genius of them all. Brian O'Driscoll's pass to himself", 'First one - handling on the ground', 'Missing SBW or Carlos Spencer is a bit of a shame.. 😂', 'Carlos Spencer is the godfather for the no look pass, behind the back pass, and any other freakish feat of skill display', 'Lafaele is one of the most underrated passer.', 'not even one from sonny bill?? honestly?', "Some good ones there but surprisingly the one where Brian O'Driscoll offloads to himself wasn't in it. Big miss.", "That Spencer pass! Barrett did a same pass against Australia in Bledisloe III 2018, and it was longer than Spencer's pass. Why wasn't it in the video. I'm surprised!", '1 and 11 👏👏👏', 'Uploading every day! really respect the grind', 'Finally... care gets so recognition', 'Can we talk about that grabber from the first vid by cheslan kolbe', 'miss some sonny bill here', 'First baby again can I have a shoutout I love u']
+
+CLUSTER 0 (processed 16 comments):
+['epic', 'shame england manager harvest cipriani skill', "miss genius brian o'driscoll pass", 'handle ground', 'miss sbw carlos spencer bit shame', 'carlos spencer godfather look pass pass freakish feat skill display', 'lafaele underrated passer', 'sonny bill honestly', "good one surprisingly brian o'driscoll offload big miss", 'spencer pass barrett pass australia bledisloe iii long spencer pass video surprised', '', 'uploading day respect grind', 'finally care get recognition', 'talk grabber vid cheslan kolbe', 'miss sonny bill', 'baby shoutout love']
+
+
+CLUSTER 19 (original 5 comments):
+["If you're ever doing another one of these please include this! https://www.youtube.com/watch?v=PT35orm5-SE", 'Wheres the offload kings the Chiefs at? (except the start, that pass is gold) honestly the Chiefs have provided so many out of no where passes that most of the time resulted in tries!', 'Danny Care v Exeter recently deserves a look in. No look double miss pass to send Ibitoye in. \nAlso the Rokoua offload for the Southern Kings v Edinburgh last year was quite something', 'Southern Kings pass against Edinburgh? Definitely deserved to be here...', "For part 2 you have to include the Southern Kings offload against Edinburgh. Wasn't even mad they scored because it was stunning."]
+
+CLUSTER 19 (processed 5 comments):
+['include', 's offload king chief start pass gold honestly chief provide pass time result try', 'danny care v exeter recently deserve look look double miss pass send ibitoye rokoua offload southern king v edinburgh year', 'southern king pass edinburgh definitely deserve', 'include southern king offload edinburgh mad score stunning']
+
+
+CLUSTER 18 (original 3 comments):
+['https://www.youtube.com/watch?v=yT4i8Gs5gAk&ab_channel=GorpitsenRugby you forget this one ;)', 'I forgot that first one', 'You forgot this one bro 😉\n\nhttps://youtu.be/15n4XCAq3Wc']
+
+CLUSTER 18 (processed 3 comments):
+['forget', 'forget', 'forget bro']
+
+
+CLUSTER 12 (original 10 comments):
+['Would throw Riki Flutey into the mix here, assist to Shane Williams for the Lions in 2009 - https://youtu.be/xSd6I-QH7A0?t=21', 'Rikki Flutey - 3rd Test from Lions v SA was outrageous skill and very brave!', 'The best is Russell with his eyes.', 'Great passes, but none as good as that by Tommy Martyn for the Saints https://www.youtube.com/watch?v=oat9LSvyGZk&t=249s', 'https://www.youtube.com/watch?v=nua5-6gnLAA This one is the best !', "this is still the best pass ever... and I'm a lions supporter. https://www.youtube.com/watch?v=cYt5rkqxBCk", 'what about that flat owen farrell pass vs ireland        but very good vid', 'Where is Votu against Racing? Need a second vidéo :). very good job for this one. https://www.youtube.com/watch?v=EQcifdWAzjY', 'another good vid! can we get a quade cooper or  handre pollard tribute?', 'Such a good video. Need to do a part 2.should feature the disgusting pass to Brad Webber the other week']
+
+CLUSTER 12 (processed 10 comments):
+['throw riki flutey mix assist shane william lion', 'rikki flutey rd test lion v sa outrageous skill brave', 'good russell eye', 'great pass good tommy martyn saint', 'good', 'good pass lion supporter', 'flat owen farrell pass vs ireland good vid', 'votu race need second vidéo good job', 'good vid quade cooper handre pollard tribute', 'good video need feature disgusting pass brad webber week']
+
+
+CLUSTER 4 (original 8 comments):
+["Can't believe TJ's mind-boggling seed against Namibia from the 2019 World Cup Group Stages didn't make it in!  That was one of my favourite moments ever! Really hoped you were saving it for that last spot at number 25. How sad :( Nonetheless great content for some Friday night viewing, thanks Andrew!", 'Haha i think Andrew is englisch is why he skipped all the tries against england like : Mapimpe and Russel', 'Great collection you have here', 'All are great. But if I were to choose one as the best, I would go with number 22.', 'Great compilation Andrew', 'Not an Andrew Forde video if it doesn’t have a few digs on England', 'Another great vid. \n\nMissing Slade to May v Scotland in 2019 6N; and Matsushima v Brave Lupus Jan 2020 (https://twitter.com/WorldRugby/status/1218473188478410759)', 'And yet another class Andrew Forde video']
+
+CLUSTER 4 (processed 8 comments):
+['believe tj mind boggle seed namibia world cup group stage favourite moment hope save spot number sad nonetheless great content friday night view thank andrew', 'think andrew englisch skip try england like mapimpe russel', 'great collection', 'great choose good number', 'great compilation andrew', 'andrew forde video dig england', 'great vid miss slade v scotland 6n matsushima v brave lupus jan', 'class andrew forde video']
+
+
+CLUSTER 10 (original 4 comments):
+['for Iribaren is not Toulon is the Munster', 'Could have included Daggs vs Australia in rwc 2011', 'You are a good person for actually including Mata vs Toulon in a compilation. All Edinburgh fans thank you!', '3:48 is RUSSELL vs england, no scotland\n5:43 is IRIBAREN vs munster, no toulon']
+
+CLUSTER 10 (processed 4 comments):
+['iribaren toulon munster', 'include dagg vs australia rwc', 'good person include mata vs toulon compilation edinburgh fan thank', '48 russell vs england scotland 43 iribaren vs munster toulon']
+
+
+CLUSTER 9 (original 6 comments):
+['All brilliant but how many would have been achieved in the Old days with a heavy laced up ball? The game is so much better now it has to entertain.', "Great video. I would have added Hernandez pass for Argentina's try (Aramburu) vs France for the 3rd place in 2007 World Cup. Arguably the best try of that tournament\nhttps://youtu.be/IjYCRVh_GmE", "Kieran Read's offload to Aaron Smith from a  lineout maul  against Argentina should've been on there but good video regardless!", 'Russell made an even better pass to Maitland in same game v England. That set up Graham in corner.', 'Brock James against Brives could be in this good video', 'do another one with Brock James against brive, its even better than the the one with the ben smith try after it']
+
+CLUSTER 9 (processed 6 comments):
+['brilliant achieve old day heavy laced ball game well entertain', 'great video add hernandez pass argentina try aramburu vs france rd place world cup arguably good try tournament', 'kieran read offload aaron smith lineout maul argentina good video regardless', 'russell well pass maitland game v england set graham corner', 'brock jame brive good video', 'brock jame brive well ben smith try']
+
+
+CLUSTER 3 (original 3 comments):
+['Is there any other game less skilful than Rugby?', "There's one great pass i will include here. \nSouth Africa vs Wales 2015 quarter final. \nDuane Vermeulen's sneaky pass from a 5m scrum to Ruan Pienaar to snatch the game with minutes remaining", 'No Ben Youngs in the RWC final vs South Africa 😂😂']
+
+CLUSTER 3 (processed 3 comments):
+['game skilful rugby', 'great pass include south africa vs wale quarter final duane vermeulen sneaky pass m scrum ruan pienaar snatch game minute remain', 'ben young rwc final vs south africa']
+
+
+CLUSTER 14 (original 8 comments):
+["It's an absolute travesty of justice that Cipriani was denied many more England caps (and I don't support England). \nBut justice was served when teh English failed to win the 2019 World Cup when Eddie Jones had sent the previous four years saying that they would win it. They might have done had Cipriani been playing.....", 'And what do you think of these double passes in French Championship ?   https://www.youtube.com/watch?v=nua5-6gnLAA', "Very good video. Perhaps should add Canale's no look backdoor pass on in top14 some years ago. What a try it was", 'Ranji Chase for Salford about 5 years ago?? Best ever Rugby pass....', 'Stuart Hogg’s jump and overhead pass to the winger? Think it was Scotland vs England a couple of years ago.', "Dan Biggar's scoring pass this year against Italy!", 'Shaun Stevenson to Bradd Weber vs Waratahs two weeks ago.', 'Personally I don’t think Ams was that memorable']
+
+CLUSTER 14 (processed 8 comments):
+['absolute travesty justice cipriani deny england cap support england justice serve teh english fail win world cup eddie jone send previous year say win cipriani play', 'think double pass french championship', 'good video add canale look backdoor pass top14 year ago try', 'ranji chase salford year ago well rugby pass', 'stuart hogg jump overhead pass winger think scotland vs england couple year ago', 'dan biggar scoring pass year italy', 'shaun stevenson bradd weber vs waratah week ago', 'personally think ams memorable']
+
+
+CLUSTER 1 (original 3 comments):
+['how forward is the pass at 4:57 though', 'More than 50% of these passes could be considered forward...', "Russell's pass is forward"]
+
+CLUSTER 1 (processed 3 comments):
+['forward pass 57', 'pass consider forward', 'russell pass forward']
+
+
+CLUSTER 15 (original 5 comments):
+["Anyone have any idea how many of those backhand passes succeed?\nSeeing Russell's brings the Champions Cup final to mind. So just wondering, do such passes cost a lot more than they earn overall?", 'Great vid but at 4:52 ParisSE 😂', 'Good to precise that the Parisse pass was in semi-final', 'Israel Dagg vs Australia in the 2011 wc semi final', 'That parisse one tho']
+
+CLUSTER 15 (processed 5 comments):
+['idea backhand pass succeed see russell bring champion cup final mind wonder pass cost lot earn overall', 'great vid 52 parisse', 'good precise parisse pass semi final', 'israel dagg vs australia wc semi final', 'parisse tho']
+
+
+CLUSTER 13 (original 4 comments):
+['matera vs crusaders in the super rugby final the last year', 'A video about offloads and passes, but one from Quade Cooper and none from SBW? Are you serious? Wow. That one season where Reds ended up beating Crusaders in the final of Super Rugby, you could have picked 5+ from each of them during that season.', 'What are Greatest Plays! Super catches!', "Any chance on a US MLR highlights? Some big names playing in it but haven't been able to catch much coverage"]
+
+CLUSTER 13 (processed 4 comments):
+['matera vs crusader super rugby final year', 'video offload pass quade cooper sbw wow season red end beat crusader final super rugby pick season', 'great play super catch', 'chance mlr highlight big name play able catch coverage']
+
+
+CLUSTER 8 (original 2 comments):
+['This is just beautiful 🥚🤤', 'Rugby at its most beautiful.']
+
+CLUSTER 8 (processed 2 comments):
+['beautiful', 'rugby beautiful']
+
+

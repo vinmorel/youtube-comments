@@ -95,15 +95,16 @@ if __name__ == "__main__":
     print("Found " + str(len(original_comments)) + " commments...")
 
 #preprocess comments
+    map_id = []
 
     if prepType == 't':
         # tfidf
         print("Preprocessing " + str(len(original_comments)) + " commments by TD-IDF...")
-        preprocessed_comments, feature_names, proc_comments = preprocess(original_comments, vec='tfidf')
+        preprocessed_comments, feature_names, proc_comments, map_id = preprocess(original_comments, vec='tfidf')
     elif prepType == 'b':
         # bag of words
         print("Preprocessing " + str(len(original_comments)) +" commments by Bag of Words...")
-        preprocessed_comments, feature_names, proc_comments = preprocess(original_comments, vec='bow')
+        preprocessed_comments, feature_names, proc_comments, map_id = preprocess(original_comments, vec='bow')
     
 #cluster comments
 
@@ -148,4 +149,4 @@ if __name__ == "__main__":
     if clusterType == 'l':
         sa.save_topics(savedFileName, list_clusters)
     else :
-        sa.save_clusters(savedFileName, list_clusters, original_comments, proc_comments)
+        sa.save_clusters(savedFileName, list_clusters, original_comments, proc_comments, map_id)

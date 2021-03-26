@@ -1,7 +1,7 @@
 
 class saver():
 
-    def save_clusters(self, file_name: str, list_clusters: list, original_comments: list, proc_comments: list):
+    def save_clusters(self, file_name: str, list_clusters: list, original_comments: list, proc_comments: list, map_id: list):
         
         orig_clusters={}
         proc_clusters={}
@@ -11,7 +11,7 @@ class saver():
             if orig_clusters.get(cluster_idx) == None:
                 orig_clusters[cluster_idx] = []
                 proc_clusters[cluster_idx] = []
-            (orig_clusters[cluster_idx]).append(original_comments[i])
+            (orig_clusters[cluster_idx]).append(original_comments[map_id[i]])
             (proc_clusters[cluster_idx]).append(proc_comments[i])
 
         with open(file_name, 'w', encoding="utf-8") as f:

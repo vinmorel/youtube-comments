@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: youtube-comments",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceRoot}/aggregator/main.py",
+            "console": "integratedTerminal",
+            "args": ["-y https://www.youtube.com/watch?v=_MJsPJ_JIJU", /* https://www.youtube.com/watch?v=ZCFkWDdmXG8 */
+                "-p b",
+                "-k AIzaSyDJGNhqD2qcy3jxv7qCG6IZU4AaZPO6suw",
+                "-c k",
+                "-n 10"
+            ]
+        }
+    ]
+}
