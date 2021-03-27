@@ -15,6 +15,8 @@ from utils.api_scraper import scraper
 from utils.preprocess import preprocess
 from utils.gather_results import saver
 
+import time
+
 
 if __name__ == "__main__":
 
@@ -77,6 +79,8 @@ if __name__ == "__main__":
 
     #if available use previous saved pickle file
 
+    startTime = time.time()
+
     if path.exists(fileName + ".pickle"):
         print("Use previous extracted commments from " + fileName + ".pickle" + "...")
 
@@ -92,24 +96,33 @@ if __name__ == "__main__":
         s = scraper(apiKey)
         original_comments = s.get_comments(videoURL, save_to_disk=True, pickle_name=fileName + ".pickle")
 
-    print("Found " + str(len(original_comments)) + " commments...")
+    endTime = time.time()
+
+    print("Found " + str(len(original_comments)) + " commments in " + format(endTime - startTime,".3f") + " seconds.")
 
 #preprocess comments
     map_id = []
 
+    startTime = time.time()
+
     if prepType == 't':
         # tfidf
-        print("Preprocessing " + str(len(original_comments)) + " commments by TD-IDF...")
+        print("Preprocessing " + str(len(original_comments)) + " commments by TD-IDF...")    
         preprocessed_comments, feature_names, proc_comments, map_id = preprocess(original_comments, vec='tfidf')
     elif prepType == 'b':
         # bag of words
         print("Preprocessing " + str(len(original_comments)) +" commments by Bag of Words...")
         preprocessed_comments, feature_names, proc_comments, map_id = preprocess(original_comments, vec='bow')
     
+    endTime = time.time()
+    print("Preprocessed in " + format(endTime - startTime,".3f") + " seconds")
+
 #cluster comments
+    startTime = time.time()
 
     if clusterType == 'k':
         print("Clustering with KMeans in " + str(NO_CLUSTERS) + " clusters...")
+        endTime = time.time()
         clust = KMeans(n_clusters=NO_CLUSTERS, random_state=0).fit(preprocessed_comments)
         list_clusters = clust.labels_
     elif clusterType == 'd':
@@ -139,6 +152,9 @@ if __name__ == "__main__":
         #print(lda_model.print_topics(-1, 5))
 
         list_clusters = lda_model.print_topics()
+
+    endTime = time.time()
+    print("Clustering completed in " + format(endTime - startTime,".3f") + " seconds")
 
 #save clusters in a text file
     savedFileName = str(fileName) + '_' + str(NO_CLUSTERS) + '_' + clusterType + '_' + prepType + '.txt'
