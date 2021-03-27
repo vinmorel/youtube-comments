@@ -24,19 +24,33 @@ def make_graph(comments_vec):
     
 if __name__ == "__main__":
     from utils.api_scraper import scraper
-    
+    import time 
+
     url = "https://www.youtube.com/watch?v=0bt0SjbS3xc&ab_channel=deeplizard"
     api_key = "AIzaSyC5HZxK4bznwBldhwF_gJXodOqYurYlFqI"
+    
+    startTime = time.time() # time scrape
     
     s = scraper(api_key)
     comments = s.get_comments(url)
 
+    endTime = time.time() # end time scrape
+    print("Found " + str(len(comments)) + " commments in " + format(endTime - startTime,".3f") + " seconds")
+
+    startTime = time.time() # time preprocess
+
     vec, feature_names, preprocessed_comments, id_map = preprocess(comments, vec='tfidf')
 
-    print(vec)
+    endTime = time.time() # end time preprocess
+    print("Preprocessed in " + format(endTime - startTime,".3f") + " seconds")
+
+    startTime = time.time() # time chinese whispers
 
     G = make_graph(vec)
     chinese_whispers(G, weighting='top', iterations=2, seed=123)
+
+    endTime = time.time() # end time chinese whispers
+    print("Clustering completed in " + format(endTime - startTime,".3f") + " seconds")
 
     comment_ids = [(preprocessed_comments[i], id_map[i]) for i in range(len(preprocessed_comments))]
 
