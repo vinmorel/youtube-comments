@@ -98,7 +98,7 @@ if __name__ == "__main__":
 
     endTime = time.time()
 
-    print("Found " + str(len(original_comments)) + " commments in " + format(endTime - startTime,".3f") + " seconds.")
+    print("Found " + str(len(original_comments)) + " commments in " + format(endTime - startTime,".3f") + " seconds")
 
 #preprocess comments
     map_id = []
@@ -151,7 +151,7 @@ if __name__ == "__main__":
         
         #print(lda_model.print_topics(-1, 5))
 
-        list_clusters = lda_model.print_topics()
+        list_clusters = lda_model.print_topics(-1)
 
     endTime = time.time()
     print("Clustering completed in " + format(endTime - startTime,".3f") + " seconds")
