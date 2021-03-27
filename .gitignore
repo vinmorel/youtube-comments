@@ -4,3 +4,10 @@
 # python cache
 __pycache__/
 *.py[cod]
+
+# vs code
+*.json
+*.pickle
+/.vscode
+*.zip
+*.code-workspace
