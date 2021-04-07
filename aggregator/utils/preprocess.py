@@ -108,7 +108,9 @@ def normalize_abbreviations(text: str) -> str:
         'nah' : 'no',
         'wanna' : 'want to',
         'imma' : 'I will',
-        'gonna' : 'going to'
+        'gonna' : 'going to',
+        'plz' : 'please',
+        'pls' : 'please'
     }
     for i, word in enumerate(words):
         try:
