@@ -21,12 +21,32 @@ def make_graph(comments_vec):
                     G.add_edge(node_1, node_2, weight=(similarity*100)**2) 
     return G
 
+
+def get_most_popular(comments: list):
+    aggregate_comments = ' '.join(comments)
+    single_words = aggregate_comments.split(' ')
+    bow = set(single_words)
+
+    most_popular_words = {}
+
+    for fw in bow:
+        most_popular_words[fw] = 0
+        for c in comments:
+            counted_flag = 0
+            for w in c.split(' '):
+                if ((fw == w) and (counted_flag == 0)):
+                    most_popular_words[fw] += 1
+                    counted_flag = 1
+
+    sorted_popular_words = [(k,v) for k, v in sorted(most_popular_words.items(), key=lambda item: item[1], reverse=True)]
+    return sorted_popular_words
+
     
 if __name__ == "__main__":
     from utils.api_scraper import scraper
     import time 
 
-    url = "https://www.youtube.com/watch?v=0bt0SjbS3xc&ab_channel=deeplizard"
+    url = "https://www.youtube.com/watch?v=UFxqMPmxsDA"
     api_key = "AIzaSyC5HZxK4bznwBldhwF_gJXodOqYurYlFqI"
     
     startTime = time.time() # time scrape
@@ -55,19 +75,22 @@ if __name__ == "__main__":
     comment_ids = [(preprocessed_comments[i], id_map[i]) for i in range(len(preprocessed_comments))]
 
     for label, cluster in sorted(aggregate_clusters(G).items(), key=lambda e: len(e[1]), reverse=True):
-        print('Cluster {}'.format(label))
+        
+        clustered_comments = [comment_ids[int(idx)][0] for idx in cluster]
+        raw_clustered_comments = [comments[int(comment_ids[int(idx)][1])] for idx in cluster]
+        
+        print('\nCluster {} - Contains {} comments  \n'.format(label, len(clustered_comments)))
 
         print("Processed comments...")
-        clustered_comments = [comment_ids[int(idx)][0] for idx in cluster]
         print(clustered_comments)
         
         print("\nUnprocessed comments...")
-        raw_clustered_comments = [comments[int(comment_ids[int(idx)][1])] for idx in cluster]
         print(raw_clustered_comments)
         
         print()
 
-
+        most_popular = get_most_popular(clustered_comments)
+        print(most_popular[:5])
 
 
 

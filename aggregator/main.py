@@ -15,6 +15,8 @@ from utils.api_scraper import scraper
 from utils.preprocess import preprocess
 from utils.gather_results import saver
 
+from chinese_whisp import make_graph, get_most_popular
+
 import time
 
 
@@ -27,7 +29,7 @@ if __name__ == "__main__":
     noClusters = 10
 
 #extract commmand line arguments
-    helpMsg = "Usage: -y <YouTube video URL> -k <API Key> -p <t | b = TF-IDF, BOW> -c <k | d | s | l = KMeans, DBSCAN, Spectral, LDA> -n <Number of clusters>"
+    helpMsg = "Usage: -y <YouTube video URL> -k <API Key> -p <t | b = TF-IDF, BOW> -c <k | d | s | l | cw = KMeans, DBSCAN, Spectral, LDA, ChineseWhispers> -n <Number of clusters>"
 
     if len(sys.argv) == 1:
         print(helpMsg)
@@ -65,7 +67,7 @@ if __name__ == "__main__":
         print("Invalid preprocessing type, using t (TF-IDF)...")
         prepType = 't'
 
-    if clusterType not in ['k', 'd', 's', 'l']:
+    if clusterType not in ['k', 'd', 's', 'l', 'cw']:
         print("Invalid cluster type, using K (KMeans)...")
         clusterType = 'k'
 
@@ -152,6 +154,44 @@ if __name__ == "__main__":
         #print(lda_model.print_topics(-1, 5))
 
         list_clusters = lda_model.print_topics(-1)
+    elif clusterType == 'cw':
+        import os
+        from chinese_whispers import chinese_whispers, aggregate_clusters
+        import numpy as np
+        import networkx as nx
+        from scipy.spatial import distance
+
+        print("Clustering with Chinese Whispers...")
+        
+        G = make_graph(preprocessed_comments)
+        chinese_whispers(G, weighting='top', iterations=2, seed=123)
+
+        comment_ids = [(proc_comments[i], map_id[i]) for i in range(len(proc_comments))]
+
+        fdir = Path(__file__).resolve().parents[0]
+
+        lab = 0
+
+        with open('ChineseWhispOut.txt', 'w', encoding="utf-8") as f:
+            for label, cluster in sorted(aggregate_clusters(G).items(), key=lambda e: len(e[1]), reverse=True):
+                clustered_comments = [comment_ids[int(idx)][0] for idx in cluster]
+                raw_clustered_comments = [original_comments[int(comment_ids[int(idx)][1])] for idx in cluster]
+                most_popular = get_most_popular(clustered_comments)[:5]
+
+                f.write("----"*60 + '\n')
+                f.write('Cluster {} \nNumber of comments : {}  \nMost popular words : {} \n\n'.format(lab, len(clustered_comments), most_popular))
+
+                f.write("Processed comments... \n")
+                f.write(str(clustered_comments) + "\n")
+                
+                f.write("\nUnprocessed comments... \n")
+                f.write(str(raw_clustered_comments) + "\n")
+                
+                f.write('\n\n')
+
+                lab += 1
+
+        os.system("start notepad.exe {}".format(str(fdir)+"\ChineseWhispOut.txt"))
 
     endTime = time.time()
     print("Clustering completed in " + format(endTime - startTime,".3f") + " seconds")
@@ -164,5 +204,5 @@ if __name__ == "__main__":
 
     if clusterType == 'l':
         sa.save_topics(savedFileName, list_clusters)
-    else :
+    elif clusterType != 'cw' :
         sa.save_clusters(savedFileName, list_clusters, original_comments, proc_comments, map_id)
